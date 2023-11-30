@@ -30,6 +30,7 @@ library
       Common.Debugging
       Common.EnumUtils
       Common.FileUtils
+      Common.Floyd
       Common.FunctorUtils
       Common.Geometry
       Common.GraphUtils

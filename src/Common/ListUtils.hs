@@ -36,7 +36,13 @@ allSets xs = gen
 singleton :: a -> [a]
 singleton x = [x]
 
-flexibleRange :: Integer -> Integer -> [Integer]
+flexibleRange :: (Integral a) => a -> a -> [a]
 flexibleRange a b
   | b >= a = [a .. b]
   | otherwise = [a,(a - 1) .. b]
+
+dropUntil :: (a -> Bool) -> [a] -> [a]
+dropUntil _ [] = []
+dropUntil pred l@(x:xs)
+  | pred x = l
+  | otherwise = dropUntil pred xs
