@@ -77,7 +77,7 @@ part1 :: Grid -> Integer
 part1 (Grid numbers symbols) = sum . map fst $ filter (adjacentToSymbol (map snd symbols)) numbers 
 
 adjacentToSymbol :: [Point] -> Number -> Bool
-adjacentToSymbol symbolPoints number = any (`elem` symbolPoints) $ getAllNumberAdjacencies number
+adjacentToSymbol symbolPoints = any (`elem` symbolPoints) . getAllNumberAdjacencies
   
 getAllNumberAdjacencies:: Number -> [Point]
 getAllNumberAdjacencies (n, start) = makeRow (-1) ++ makeRow 0 ++ makeRow 1

@@ -56,4 +56,5 @@ part2 =  sum . Map.elems .foldl countKids Map.empty . sortOn (Data.Ord.Down . ca
 countKids :: Map Integer Integer -> Card -> Map Integer Integer
 countKids counts card = case toInteger $ matchingCards card of
   0  -> Map.insert (cardId card) 1 counts
-  x  -> Map.insert (cardId card) (toInteger (1 + sum (mapMaybe (\d -> Map.lookup (cardId card + d) counts) [1..x]))) counts
+  x  -> Map.insert (cardId card) (toInteger totalChildren) counts
+    where totalChildren = 1 + sum (mapMaybe (\d -> Map.lookup (cardId card + d) counts) [1..x])
